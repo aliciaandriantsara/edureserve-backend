@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\ValidationReservationController;
 use Illuminate\Support\Facades\Route;
 
 //C'est ici qu'on declare les adresses de notre application
@@ -17,3 +18,7 @@ Route::get('/test-interface', function () {
     //si quelqu'un visite l'adresse /test-interface alors affiche la vue test
     return view('test');
 });
+
+//Route pour les services logistiques 
+Route::get('/logistique/demandes', [ValidationReservationController::class, 'index']);
+Route::patch('/logistique/nouvelle-reservation/{id}/statut', [ValidationReservationController::class, 'updateStatut']);
